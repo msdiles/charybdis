@@ -1,0 +1,30 @@
+{
+  "name": "charybdis",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode=development",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msdiles/charybdis.git"
+  },
+  "author": "Dmitrij Leshchuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/msdiles/charybdis/issues"
+  },
+  "homepage": "https://github.com/msdiles/charybdis#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.5.0",
+    "ts-loader": "^8.0.4",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "typescript": "^4.0.3"
+  }
+}
