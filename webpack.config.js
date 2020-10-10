@@ -28,6 +28,9 @@ module.exports = {
             }
         })
     ],
+    resolve: {
+        extensions: [".js",".ts"]
+    },
     devServer: {
         port: 8000,
         contentBase: "dist",
