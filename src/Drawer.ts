@@ -26,11 +26,13 @@ class Drawer {
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
   }
 
-  prerender() {
+  predraw(renderEntities: ((() => void) | null)[]) {
+    console.log(renderEntities)
+    this.objects.push(...renderEntities)
     this.showFPS()
   }
 
-  render() {
+  draw() {
     const update = () => {
       this.clearFrame()
       this.objects.forEach((func) => {
@@ -46,7 +48,6 @@ class Drawer {
     this.time = this.prevTime = performance.now()
     this.objects.push(() => {
       this.time = performance.now()
-      console.log(this.fps)
       if (this.time - this.prevTime >= 1000) {
         this.fpsPrev = this.fps
         this.fps = 0

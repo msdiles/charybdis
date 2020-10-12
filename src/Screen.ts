@@ -12,8 +12,8 @@ class Screen {
     this.height = this.defineHeight(S1, S3)
     this.midPoint = this.defineMidPoint(S2, S3)
     this.planeEquation = this.definePlaneEquation(
-      Vector.createPoint(0, 0, 100),
-      Vector.createPoint(1920, 0, 100),
+      S1,
+      S2,
       this.midPoint
     )
   }
@@ -33,6 +33,7 @@ class Screen {
   private definePlaneEquation(A: IPoint, B: IPoint, C: IPoint): IPoint {
     return Vector.vectorPlaneEquation(A, B, C)
   }
+
 }
 
 

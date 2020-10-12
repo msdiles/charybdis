@@ -3,21 +3,21 @@ import {IPoint, IVector} from "./interfaces/geometry"
 import Screen from "./Screen"
 import Vector from "./Vector"
 
-class Camera extends Entity {
-
+class Camera {
+  center : IPoint
   distance: number
   screen: Screen
   cameraPoint: IPoint
   normalVector: IVector
 
   constructor(point: IPoint, distance: number) {
-    super(point.x, point.y, point.z)
+    this.center = point
     this.distance = distance
     this.screen = new Screen(
-      Vector.createPoint(0, 0, 100),
-      Vector.createPoint(1920, 0, 100),
-      Vector.createPoint(0, -1080, 100),
-      Vector.createPoint(1920, -1080, 100)
+      Vector.createPoint(400 , 400, 400),
+      Vector.createPoint(880, 1040, 400),
+      Vector.createPoint(400, 400, -200),
+      Vector.createPoint(880, 1040, -200)
     )
 
     this.normalVector = Vector.vectorNormalization(this.screen.planeEquation)

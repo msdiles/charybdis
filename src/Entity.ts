@@ -1,13 +1,20 @@
-class Entity {
-    protected x: number = 0
-    protected y: number = 0
-    protected z: number = 0
+import {IPoint} from "./interfaces/geometry"
 
-    constructor(x: number, y: number, z: number) {
-        this.x = x
-        this.y = y
-        this.z = z
-    }
+abstract class Entity {
+  __coordinates: IPoint[]
+  coordinates: [IPoint] | [] = []
+  center: IPoint
+  ctx: CanvasRenderingContext2D
+
+  constructor(center: IPoint, canvas: HTMLCanvasElement,coordinates:IPoint[]) {
+    this.center = center
+    this.ctx = canvas.getContext("2d") as CanvasRenderingContext2D
+    this.__coordinates=coordinates
+  }
+
+  abstract draw(x:number,y:number): void
+
+  abstract findProjections(points: IPoint[]): void
 }
 
 export default Entity

@@ -9,7 +9,7 @@ class Vector {
   static vectorLength(A: IPoint, B: IPoint): number
   static vectorLength(A: any, B?: IPoint): number {
     if (B) {
-      return Math.sqrt((A.x + B.x) ** 2 + (A.y + B.y) ** 2 + (A.z + B.z) ** 2)
+      return Math.sqrt((A.x - B.x) ** 2 + (A.y - B.y) ** 2 + (A.z - B.z) ** 2)
     } else {
       return Math.sqrt((A.x) ** 2 + (A.y) ** 2 + (A.z) ** 2)
     }
@@ -45,6 +45,36 @@ class Vector {
       z: +(vector.z / vectorLength).toFixed(5)
     }
   }
+
+  //A      C
+  //\     /
+  // \   /
+  //  \ /
+  //   B
+  static cosBetweenTwoVectors(A: IPoint, B: IPoint, C: IPoint) {
+    const vector1 = this.vectorFromTwoPoints(A, B)
+    const vector2 = this.vectorFromTwoPoints(A, C)
+    const a = this.vectorInnerProduct(vector1, vector2)
+    const b = this.vectorLength(vector1)*this.vectorLength(vector2)
+    return this.toFixed(a / b,4)
+  }
+
+  static vectorInnerProduct(A: IVector, B: IVector) {
+    return this.toFixed(((A.x * B.x) + (A.y * B.y) + (A.z * B.z)), 2)
+  }
+
+  static vectorFromTwoPoints(A: IPoint, B: IPoint): IVector {
+    return {
+      x: this.toFixed(B.x - A.x, 2),
+      y: this.toFixed(B.y - A.y, 2),
+      z: this.toFixed(B.z - A.z, 2)
+    }
+  }
+
+  static toFixed(target: number, fractionDigist: number) {
+    return +(target).toFixed(fractionDigist)
+  }
 }
+
 
 export default Vector
